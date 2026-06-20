@@ -5,7 +5,7 @@ RUN npm ci --only=production
 
 FROM node:18-alpine
 WORKDIR /app
-RUN apk add --no-cache openssl curl bash coreutils iproute2
+RUN npm install --production
 COPY --from=builder /app/node_modules ./node_modules
 COPY . .
 RUN chmod +x index.js
